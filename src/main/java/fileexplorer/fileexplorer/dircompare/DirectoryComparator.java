@@ -2,6 +2,7 @@ package fileexplorer.fileexplorer.dircompare;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,20 +21,20 @@ public class DirectoryComparator {
             if (d2 == null) continue;
 
             String status = d1.equals(d2) ? "Match" : "Different";
-            results.add(new ResultRow(d1.getFileName(), d2.getFileName(), status));
+            results.add(new ResultRow(d1.getFilePath(), d2.getFilePath(), status));
         }
         return results;
     }
 
     private static Map<String, DirectoryInfo> mapDirs(File base) {
-        Map<String, DirectoryInfo> directoryMap = new java.util.HashMap<>();
+        Map<String, DirectoryInfo> directoryMap = new HashMap<>();
         scan(base, directoryMap);
         return directoryMap;
     }
 
     private static void scan(File dir, Map<String, DirectoryInfo> directoryMap) {
         if (dir.isDirectory()) {
-            directoryMap.put(dir.getPath(), DirectoryInfo.from(dir));
+            directoryMap.put(dir.getName(), DirectoryInfo.from(dir));
             File[] files = dir.listFiles();
             if (files != null) {
                 for (File file : files) {

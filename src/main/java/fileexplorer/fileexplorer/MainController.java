@@ -1,10 +1,11 @@
 package fileexplorer.fileexplorer;
 
 import fileexplorer.fileexplorer.dircompare.DirectoryComparator;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -30,9 +31,9 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        dir1Column.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getDir1()));
-        dir2Column.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getDir2()));
-        statusColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getStatus()));
+        dir1Column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDir1()));
+        dir2Column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDir2()));
+        statusColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
         resultTable.setItems(data);
     }
 
@@ -72,7 +73,7 @@ public class MainController {
                 var results = DirectoryComparator.compareDirectories(dirPath1, dirPath2);
                 for (var row : results) {
                     updateMessage("Found " + row.getDir1() + " - " + row.getDir2() + ": " + row.getStatus());
-                    javafx.application.Platform.runLater(() -> resultTable.getItems().add(row));
+                    Platform.runLater(() -> resultTable.getItems().add(row));
                 }
                 return null;
             }

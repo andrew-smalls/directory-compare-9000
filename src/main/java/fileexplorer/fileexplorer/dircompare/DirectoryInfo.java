@@ -5,18 +5,20 @@ import java.util.Objects;
 
 public class DirectoryInfo {
     private final String fileName;
+    private final String filePath;
     private final long fileSize;
     private final long fileCount;
 
-    public DirectoryInfo(String fileName, long fileSize, long fileCount) {
+    public DirectoryInfo(String fileName, String filePath, long fileSize, long fileCount) {
         this.fileName = fileName;
+        this.filePath = filePath;
         this.fileSize = fileSize;
         this.fileCount = fileCount;
     }
 
     public static DirectoryInfo from(File dir) {
         long[] stats = getStats(dir);
-        return new DirectoryInfo(dir.getName(), stats[0], stats[1]);
+        return new DirectoryInfo(dir.getName(), dir.getAbsolutePath(), stats[0], stats[1]);
     }
 
     private static long[] getStats(File dir) {
@@ -43,9 +45,15 @@ public class DirectoryInfo {
     public String getFileName() {
         return fileName;
     }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
     public long getFileSize() {
         return fileSize;
     }
+
     public long getFileCount() {
         return fileCount;
     }
