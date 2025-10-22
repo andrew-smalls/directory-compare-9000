@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fileexplorer.fileexplorer.MainController">
+<VBox alignment="CENTER" maxHeight="720.0" maxWidth="960.0" prefHeight="720.0" prefWidth="960.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fileexplorer.fileexplorer.MainController">
   <padding>
     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
   </padding>
@@ -24,9 +24,12 @@
             <Font size="14.0" />
          </font>
     </Label>
+      <VBox.margin>
+         <Insets top="-150.0" />
+      </VBox.margin>
   </HBox>
 
-  <HBox prefWidth="150" spacing="10.0">
+  <HBox layoutY="100.0" prefWidth="150" spacing="10.0">
     <Button onAction="#onSelectDir2" prefWidth="200.0" text="Second Directory Path">
       <font>
         <Font size="14.0" />
@@ -44,11 +47,14 @@
 
   <Button onAction="#onStartCompare" text="Start Compare" />
 
-  <TableView fx:id="resultTable" prefHeight="400">
+  <TableView fx:id="resultTable" prefHeight="400.0" prefWidth="930.0">
     <columns>
-      <TableColumn fx:id="dir1Column" prefWidth="200" text="Directory 1" />
-      <TableColumn fx:id="dir2Column" prefWidth="200" text="Directory 2" />
-      <TableColumn fx:id="statusColumn" prefWidth="120" text="Status" />
+      <TableColumn fx:id="dir1Column" prefWidth="400.0" text="Directory 1" />
+      <TableColumn fx:id="dir2Column" prefWidth="400.0" text="Directory 2" />
+      <TableColumn fx:id="statusColumn" prefWidth="130.0" text="Status" />
     </columns>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
   </TableView>
 </VBox>
