@@ -5,6 +5,8 @@ A small JavaFX desktop app that compares two directory trees and shows per-file 
 
 The UI lets the user pick two folders, run a comparison, and see each entry labeled: "Match" - if the dir/subdirs are the same in terms of name and size - or "Different".
 
+My personal use case: I had 2 hard disks with many-many-many pictures separated in directories and subdirectories. The problem was, I had duplicate directories as well and manually identifiyng which directories were duplicates was too time-consuming. Alternative software for this is too bloated: most similar tools recursively go directory after directory and scan the files to find duplicates - this is something very demanding on older HDDs. 
+
 ### Initial screen
 ![1](demo/1.png)
 
