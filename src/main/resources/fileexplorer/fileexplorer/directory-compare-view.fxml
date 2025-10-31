@@ -5,10 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="720.0" maxWidth="960.0" prefHeight="720.0" prefWidth="960.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fileexplorer.fileexplorer.MainController">
-  <padding>
-    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-  </padding>
+<VBox alignment="CENTER" maxHeight="720.0" maxWidth="960.0" prefHeight="720.0" prefWidth="960.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fileexplorer.fileexplorer.Controller.DirectoryCompareController">
 
   <HBox prefWidth="150" spacing="10.0">
     <Button onAction="#onSelectDir1" prefWidth="200.0" text="First Directory Path">
@@ -57,4 +54,8 @@
          <Insets />
       </VBox.margin>
   </TableView>
+  <Button onAction="#onBack" text="Back to Menu" />
+  <padding>
+    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+  </padding>
 </VBox>

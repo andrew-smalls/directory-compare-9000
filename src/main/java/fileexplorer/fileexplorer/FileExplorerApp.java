@@ -12,7 +12,7 @@ public class FileExplorerApp extends Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("File explorer (Teemu version)!");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(FileExplorerApp.class.getResource("main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FileExplorerApp.class.getResource("menu-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();

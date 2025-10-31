@@ -7,4 +7,6 @@ module fileexplorer.fileexplorer {
 
     opens fileexplorer.fileexplorer to javafx.fxml;
     exports fileexplorer.fileexplorer;
+    exports fileexplorer.fileexplorer.Controller;
+    opens fileexplorer.fileexplorer.Controller to javafx.fxml;
 }

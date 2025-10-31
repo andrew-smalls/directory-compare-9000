@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="720.0" maxWidth="960.0" prefHeight="720.0" prefWidth="960.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fileexplorer.fileexplorer.Controller.DuplicateFinderController">
+
+    <HBox prefWidth="150" spacing="10.0">
+        <Button onAction="#onSelectDir1" prefWidth="200.0" text="Directory To Analyze">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Label fx:id="dirLabel1" text="Not selected">
+            <HBox.margin>
+                <Insets bottom="5.0" left="10.0" top="5.0" />
+            </HBox.margin>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <VBox.margin>
+            <Insets top="-150.0" />
+        </VBox.margin>
+    </HBox>
+    <Button onAction="#onFindDuplicates" text="Find Duplicates" />
+    <TableView fx:id="resultTable" prefHeight="400.0" prefWidth="960.0">
+        <columns>
+            <TableColumn fx:id="fileColumn" prefWidth="400.0" text="File" />
+            <TableColumn fx:id="pathsColumn" prefWidth="400.0" text="Paths" />
+        </columns>
+        <VBox.margin>
+            <Insets />
+        </VBox.margin>
+    </TableView>
+
+    <Button onAction="#onBack" text="Back to Menu" />
+</VBox>
