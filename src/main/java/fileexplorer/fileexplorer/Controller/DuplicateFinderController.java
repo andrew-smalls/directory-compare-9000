@@ -82,7 +82,10 @@ public class DuplicateFinderController {
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() {
-                List<ResultRowFileDuplicate> duplicates = DuplicateFinder.findDuplicates(dirPath1);
+                int cores = Runtime.getRuntime().availableProcessors();
+                int maxParallelism = (int) (cores * 0.8);
+                DuplicateFinder duplicateFinder = new DuplicateFinder(maxParallelism);
+                List<ResultRowFileDuplicate> duplicates = duplicateFinder.findDuplicates(dirPath1);
                 for (ResultRowFileDuplicate duplicate : duplicates) {
                     updateMessage("Found " + duplicate.getFileName() + " - " + duplicate.getPaths());
                     Platform.runLater(() -> resultTable.getItems().add(duplicate));
