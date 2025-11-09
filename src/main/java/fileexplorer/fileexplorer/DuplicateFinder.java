@@ -78,15 +78,6 @@ public class DuplicateFinder {
         return duplicates;
     }
 
-    private HashMap<String, ArrayList<String>> identifyDuplicateFilesSingle(ArrayList<DirectoryMap> directoryMaps) {
-        ArrayList<DirectoryMap> originalFiles = new ArrayList<>(directoryMaps);
-        HashMap<String, ArrayList<String>> duplicates = new HashMap<>();
-        for (DirectoryMap directoryMap : directoryMaps) {
-            findDuplicatesInDirectory(directoryMap, originalFiles, duplicates);
-        }
-        return duplicates;
-    }
-
     private void findDuplicatesInDirectory(DirectoryMap directoryMap, ArrayList<DirectoryMap> originalFiles, HashMap<String, ArrayList<String>> duplicates) {
         try {
             System.out.println("Acquiring concurrency limiter for " + directoryMap.getDirectory());
@@ -129,11 +120,11 @@ public class DuplicateFinder {
                         && f.getName().equals(file.getName()));
     }
 
-
     private boolean isPicture(String filePath) {
         String lowerPath = filePath.toLowerCase();
         return lowerPath.endsWith(".jpg") || lowerPath.endsWith(".jpeg") ||
                lowerPath.endsWith(".png") || lowerPath.endsWith(".gif") ||
-               lowerPath.endsWith(".bmp") || lowerPath.endsWith(".tiff");
+               lowerPath.endsWith(".bmp") || lowerPath.endsWith(".tiff") ||
+               lowerPath.endsWith(".cr2") || lowerPath.endsWith(".heic");
     }
 }
