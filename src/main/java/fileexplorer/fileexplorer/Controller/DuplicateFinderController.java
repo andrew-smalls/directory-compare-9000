@@ -4,7 +4,6 @@ import fileexplorer.fileexplorer.DuplicateFinder;
 import fileexplorer.fileexplorer.ResultRowDirectoryAnalysis;
 import fileexplorer.fileexplorer.ResultRowFileDuplicate;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -46,6 +45,8 @@ public class DuplicateFinderController {
     private final ObservableList<ResultRowDirectoryAnalysis> dataDirectoryAnalysis = FXCollections.observableArrayList();
 
     private final String resourcesPath = "/fileexplorer/fileexplorer/";
+    private int preferredWidth = 160;
+    private int preferredHeight = 160;
 
     @FXML
     public void initialize() {
@@ -55,6 +56,7 @@ public class DuplicateFinderController {
 
     private void setDataForFileDuplicates() {
         fileColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFileName()));
+        pathsColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPaths()));
         pathsColumn.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(ObservableList<String> item, boolean empty) {
@@ -78,12 +80,12 @@ public class DuplicateFinderController {
             private final Button keepSecond = new Button("Keep Second");
 
             {
-                imageView1.setFitWidth(80);
-                imageView1.setFitHeight(80);
+                imageView1.setFitWidth(preferredWidth);
+                imageView1.setFitHeight(preferredHeight);
                 imageView1.setPreserveRatio(true);
 
-                imageView2.setFitWidth(80);
-                imageView2.setFitHeight(80);
+                imageView2.setFitWidth(preferredWidth);
+                imageView2.setFitHeight(preferredHeight);
                 imageView2.setPreserveRatio(true);
 
                 container.setAlignment(Pos.CENTER_LEFT);
@@ -127,14 +129,14 @@ public class DuplicateFinderController {
                 row.getFirstPath().ifPresent(path -> {
                     if (path.matches(".*\\.(jpg|jpeg|png|bmp|gif)$")) {
                         try {
-                            imageView1.setImage(new Image(new File(path).toURI().toString(), 80, 80, true, true));
+                            imageView1.setImage(new Image(new File(path).toURI().toString(), preferredWidth, preferredHeight, true, true));
                         } catch (Exception ignored) {}
                     }
                 });
                 row.getSecondPath().ifPresent(path -> {
                     if (path.matches(".*\\.(jpg|jpeg|png|bmp|gif)$")) {
                         try {
-                            imageView2.setImage(new Image(new File(path).toURI().toString(), 80, 80, true, true));
+                            imageView2.setImage(new Image(new File(path).toURI().toString(), preferredWidth, preferredHeight, true, true));
                         } catch (Exception ignored) {}
                     }
                 });
