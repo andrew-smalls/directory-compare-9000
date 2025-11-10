@@ -34,8 +34,9 @@
       </VBox.margin></Button>
    <TableView fx:id="directoryAnalysisTable" layoutX="10.0" layoutY="115.0" prefHeight="200.0" prefWidth="960.0" tableMenuButtonVisible="true">
       <columns>
-         <TableColumn fx:id="directoryColumn" prefWidth="200.0" text="Directory" />
-         <TableColumn fx:id="nrDuplicateFilesColumn" prefWidth="300.0" text="Number of duplicated files" />
+         <TableColumn fx:id="directoryColumn" prefWidth="600.0" resizable="false" text="Directory" />
+          <TableColumn fx:id="nrDuplicateFilesColumn" prefWidth="200.0" resizable="false" text="Number of duplicated files" />
+         <TableColumn fx:id="directorySize" prefWidth="150.0" resizable="false" text="Directory Size" />
       </columns>
       <columnResizePolicy>
          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

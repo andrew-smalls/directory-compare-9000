@@ -80,7 +80,7 @@ public class DuplicateFinder {
 
     private void findDuplicatesInDirectory(DirectoryMap directoryMap, ArrayList<DirectoryMap> originalFiles, HashMap<String, ArrayList<String>> duplicates) {
         try {
-            System.out.println("Acquiring concurrency limiter for " + directoryMap.getDirectory());
+            //System.out.println("Acquiring concurrency limiter for " + directoryMap.getDirectory());
             concurrencyLimiter.acquire();
             ArrayList<File> duplicateFiles = new ArrayList<>();
             for (File file: directoryMap.getFiles()) {
@@ -106,7 +106,7 @@ public class DuplicateFinder {
             System.err.println("Failed to analyse: " + directoryMap.getDirectory());
         } finally {
             concurrencyLimiter.release();
-            System.out.println("Releasing concurrency limiter for " + directoryMap.getDirectory());
+            //System.out.println("Releasing concurrency limiter for " + directoryMap.getDirectory());
         }
     }
 

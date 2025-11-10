@@ -4,6 +4,7 @@ import fileexplorer.fileexplorer.DuplicateFinder;
 import fileexplorer.fileexplorer.ResultRowDirectoryAnalysis;
 import fileexplorer.fileexplorer.ResultRowFileDuplicate;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -41,6 +42,7 @@ public class DuplicateFinderController {
     @FXML private TableView<ResultRowDirectoryAnalysis> directoryAnalysisTable;
     @FXML private TableColumn<ResultRowDirectoryAnalysis, String> directoryColumn;
     @FXML private TableColumn<ResultRowDirectoryAnalysis, Integer> nrDuplicateFilesColumn;
+    @FXML private TableColumn<ResultRowDirectoryAnalysis, Double> directorySize;
     private final ObservableList<ResultRowDirectoryAnalysis> dataDirectoryAnalysis = FXCollections.observableArrayList();
 
     private final String resourcesPath = "/fileexplorer/fileexplorer/";
@@ -147,6 +149,10 @@ public class DuplicateFinderController {
     private void setDataForDirectoryAnalysis() {
         directoryColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDirectoryPath()));
         nrDuplicateFilesColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNumberOfDuplicates()));
+        directorySize.setCellValueFactory(cellData -> {
+          Map.Entry<String, Double> entry = cellData.getValue().getDirectorySize().entrySet().iterator().next();
+            return new SimpleObjectProperty(String.format("%.2f (%s)", entry.getValue(), entry.getKey()));
+        });
         directoryAnalysisTable.setItems(dataDirectoryAnalysis);
     }
 
